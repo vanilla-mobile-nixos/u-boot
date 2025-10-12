@@ -24,4 +24,6 @@ buildUBoot {
   ];
 
   extraMeta.platforms = [ "aarch64-linux" ];
+
+  deviceTree = ./a2corelte-stub.dts;
 }

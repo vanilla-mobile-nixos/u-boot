@@ -4,8 +4,6 @@
   dtc,
   dtbtool-exynos,
   android-tools,
-
-  devicetree,
 }:
 device:
 runCommand "${device.pname}-boot-image"
@@ -22,11 +20,13 @@ runCommand "${device.pname}-boot-image"
 
     mkdir -p $out
 
-    dtc -I dts -O dtb -o stub.dtb ${devicetree}
-    dtbTool-exynos -o stub.dt.img stub.dtb
+    if [ ${toString (device ? deviceTree)} ]; then
+      dtc -I dts -O dtb -o stub.dtb ${device.deviceTree}
+      dtbTool-exynos -o stub.dt.img stub.dtb
+    fi
 
     mkbootimg  \
       --kernel u-boot.bin.gz \
-      --dtb stub.dt.img \
+      ${lib.optionalString (device ? deviceTree) "--dtb stub.dt.img"} \
       -o $out/u-boot.img
   ''
