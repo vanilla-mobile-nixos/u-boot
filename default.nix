@@ -10,11 +10,11 @@
 pkgs.lib.makeScope pkgs.newScope (self: {
   inherit pkgs lib;
 
-  makeBootImage = self.callPackage ./make-boot-image.nix { };
+  makeBootImage = self.callPackage ./utils/make-boot-image.nix { };
 
-  a2corelte = pkgs.pkgsCross.aarch64-multiplatform.callPackage ./a2corelte.nix { };
+  a2corelte = pkgs.pkgsCross.aarch64-multiplatform.callPackage ./devices/a2corelte.nix { };
   a2corelte-boot-image = with self; makeBootImage a2corelte;
 
-  dtbtool-exynos = self.callPackage ./dtbtool-exynos.nix { };
-  devicetree = ./stub.dts;
+  dtbtool-exynos = self.callPackage ./utils/dtbtool-exynos.nix { };
+  devicetree = ./devices/a2corelte-stub.dts;
 })
