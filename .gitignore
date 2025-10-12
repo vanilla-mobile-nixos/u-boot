@@ -1,0 +1,4 @@
+result*
+
+# https://github.com/nix-community/nix-direnv
+.direnv*
