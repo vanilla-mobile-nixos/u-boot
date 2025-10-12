@@ -1,4 +1,5 @@
 {
+  # TODO: pin nixpkgs
   nixpkgs ? (fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-unstable"),
   pkgs ? import nixpkgs {
     config.allowUnfree = true;
@@ -16,11 +17,4 @@ pkgs.lib.makeScope pkgs.newScope (self: {
 
   dtbtool-exynos = self.callPackage ./dtbtool-exynos.nix { };
   devicetree = ./stub.dts;
-
-  flake.packages = {
-    inherit (self)
-      a2corelte
-      a2corelte-boot-image
-      ;
-  };
 })
