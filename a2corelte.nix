@@ -19,7 +19,7 @@ buildUBoot {
   defconfig = "exynos-mobile_defconfig";
 
   filesToInstall = [
-    "u-boot-nodtb.bin"
+    "u-boot.bin"
     "u-boot.dtb"
   ];
 

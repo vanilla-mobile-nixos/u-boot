@@ -17,8 +17,8 @@ runCommand "${device.pname}-boot-image"
     ];
   }
   ''
-    gzip ${device}/u-boot-nodtb.bin -c > u-boot-nodtb.bin.gz
-    cat ${device}/u-boot.dtb >> u-boot-nodtb.bin.gz
+    gzip ${device}/u-boot.bin -c > u-boot.bin.gz
+    cat ${device}/u-boot.dtb >> u-boot.bin.gz
 
     mkdir -p $out
 
@@ -26,6 +26,7 @@ runCommand "${device.pname}-boot-image"
     dtbTool-exynos -o stub.dt.img stub.dtb
 
     mkbootimg  \
-      --kernel u-boot-nodtb.bin.gz \
+      --kernel u-boot.bin.gz \
+      --dtb stub.dt.img \
       -o $out/u-boot.img
   ''
