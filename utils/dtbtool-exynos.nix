@@ -76,7 +76,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = {
     description = "DTB tool for exynos chips";
     homepage = "https://github.com/dsankouski/dtbtool-exynos";
-    license = lib.licenses.unfree; # FIXME: no license
+    license = lib.licenses.bsd3;
     mainProgram = "dtbtool-exynos";
     platforms = lib.platforms.all;
   };

@@ -2,7 +2,7 @@
   # TODO: pin nixpkgs
   nixpkgs ? (fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-unstable"),
   pkgs ? import nixpkgs {
-    config.allowUnfree = true;
+    config = { };
     overlays = [ ];
   },
   lib ? pkgs.lib,
