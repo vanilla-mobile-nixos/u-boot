@@ -16,5 +16,4 @@ pkgs.lib.makeScope pkgs.newScope (self: {
   a2corelte-boot-image = with self; makeBootImage a2corelte;
 
   dtbtool-exynos = self.callPackage ./utils/dtbtool-exynos.nix { };
-  devicetree = ./devices/a2corelte-stub.dts;
 })
